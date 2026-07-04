@@ -8,6 +8,8 @@ plus a synthesized study guide.
 This repo is just the connector. The debate engine, model key, and (planned)
 billing live in the hosted Perspect API that this proxies to.
 
+**Live app:** [perspect-ai-app.vercel.app](https://perspect-ai-app.vercel.app)
+
 ## Tools
 
 | Tool | Description |
