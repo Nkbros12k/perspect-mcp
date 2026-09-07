@@ -1,0 +1,6 @@
+{
+  "name": "perspect-debate",
+  "description": "Convene a panel of expert AI personas to debate any topic, idea, or decision. Perspect runs the debate, cites live web sources, maps exactly where the experts disagree, and returns a synthesized briefing. Not a yes-man, every side.",
+  "version": "1.0.0",
+  "author": { "name": "Perspect", "url": "https://tryperspect.com" }
+}

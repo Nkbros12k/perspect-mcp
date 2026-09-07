@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "perspect": {
+      "type": "http",
+      "url": "https://perspect-ai-backend.onrender.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${PERSPECT_TOKEN}"
+      }
+    }
+  }
+}

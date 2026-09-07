@@ -1,46 +1,41 @@
-# Perspect MCP Connector
+# Perspect , Claude Code plugin
 
-An [MCP](https://modelcontextprotocol.io) server that lets Claude (and other MCP
-clients like ChatGPT / Cursor) call **Perspect AI** as a tool: convene a panel of
-expert personas to debate any topic, idea, or decision, and get back the debate
-plus a synthesized study guide.
+Convene a panel of expert AI personas to debate any topic, idea, or decision,
+from every side. [Perspect](https://tryperspect.com) runs the debate, cites live
+web sources, maps exactly where the experts disagree, and hands back a
+synthesized briefing. Not a yes-man.
 
-This repo is just the connector. The debate engine, model key, and (planned)
-billing live in the hosted Perspect API that this proxies to.
+## Install
 
-**Live app:** [perspect-ai-app.vercel.app](https://perspect-ai-app.vercel.app)
+```
+/plugin marketplace add Nkbros12k/perspect-mcp
+/plugin install perspect-debate@perspect
+```
+
+## Set your token
+
+The connector runs debates against your own Perspect account, so it needs a
+personal token (requires a Perspect Pro plan):
+
+1. Go to https://www.tryperspect.com/connect and click **Generate key**.
+2. Set it in your environment before using the plugin:
+   ```
+   export PERSPECT_TOKEN=psk_your_key_here
+   ```
+   (or add `PERSPECT_TOKEN=...` to your shell profile / `.claude/env`.)
+
+The plugin's MCP config reads `${PERSPECT_TOKEN}` and sends it as
+`Authorization: Bearer <token>`.
 
 ## Tools
 
-| Tool | Description |
-|---|---|
-| `run_debate` | Convene a panel on a topic/idea/decision. Optional `personas` (2 to 5 ids); omit to auto-select. Returns the debate + study guide. |
-| `list_personas` | List available persona ids, names, and disciplines. |
+- `run_debate(topic, personas?)` , convene the panel; returns the debate, the
+  contradiction map, and a synthesized briefing (~30-60s).
+- `list_personas()` , list the available expert personas.
 
-## Run locally
+## Example
 
-```bash
-npm install
-cp .env.example .env    # PERSPECT_API_URL defaults to the hosted backend
-npm run dev             # MCP server on http://localhost:4000/mcp
-```
+> "Convene a Perspect panel on whether we should raise prices, then summarize
+> where the experts disagree."
 
-## Add to Claude
-
-1. Deploy this server (see `render.yaml`) or run it locally and expose it.
-2. In claude.ai: **Settings → Connectors → Add custom connector**.
-3. Name it `Perspect AI` and use the server's `/mcp` URL.
-4. Ask Claude: *"Use Perspect to debate whether we should raise or bootstrap."*
-
-## Config
-
-| Env var | Default | Purpose |
-|---|---|---|
-| `PERSPECT_API_URL` | `https://perspect-ai-backend.onrender.com` | Hosted Perspect API base URL |
-| `PORT` | `4000` | Port the connector listens on |
-
-## Notes
-
-- A full debate takes ~30 to 60s.
-- This connector is currently authless. Per-account auth, usage quotas, and a
-  freemium paid tier are planned at the Perspect API layer.
+Docs: https://www.tryperspect.com/docs
