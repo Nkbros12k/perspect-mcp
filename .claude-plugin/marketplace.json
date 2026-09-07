@@ -11,8 +11,20 @@
       "description": "Convene a panel of expert AI personas to debate any topic, idea, or decision, from every side. Returns the debate, a contradiction map of where they disagree, and a synthesized briefing.",
       "displayName": "Perspect: AI Debate Panel",
       "category": "productivity",
-      "tags": ["debate", "decision-making", "research", "reasoning", "writing"],
-      "author": { "name": "Perspect", "url": "https://tryperspect.com" }
+      "tags": [
+        "debate",
+        "decision-making",
+        "research",
+        "reasoning",
+        "writing"
+      ],
+      "author": {
+        "name": "Perspect",
+        "url": "https://tryperspect.com"
+      }
     }
-  ]
+  ],
+  "metadata": {
+    "description": "Perspect: convene a panel of expert AI personas to debate any decision from every side, inside Claude."
+  }
 }
